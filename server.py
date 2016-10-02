@@ -67,7 +67,7 @@ if __name__ == '__main__':
             current_state        = message.payload == b'open'
             current_state_change = time.time()
     mqttc.on_message = on_message
-    mqttc.subscribe('bitlair/state')
+    mqttc.subscribe('bitlair/state', qos=2)
 
     app = make_app()
     app.listen(8888)
