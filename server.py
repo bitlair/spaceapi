@@ -35,9 +35,9 @@ class StatejsonHandler(tornado.web.RequestHandler):
                 'spacephone': False,
             },
             'location': {
-                'address': 'Heiligenbergerweg 144b, 3816 AN Amersfoort, The Netherlands',
-                'lat':     52.146196,
-                'lon':     5.405488,
+                'address': 'Computerweg 20A, 3821 AB Amersfoort, The Netherlands',
+                'lat': 52.177323,
+                'lon': 5.414782,
             },
             'state': {
                 'open':       current_state,
