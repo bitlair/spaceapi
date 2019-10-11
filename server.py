@@ -56,18 +56,22 @@ def make_app():
         (r'/statejson', StatejsonHandler),
     ])
 
+def on_message(client, userdata, message):
+    global current_state, current_state_change
+    if message.topic == 'bitlair/state':
+        current_state        = message.payload == b'open'
+        current_state_change = time.time()
+
+def on_connect(client, userdata, flags, rc):
+    client.subscribe('bitlair/state', qos=2)
+
 if __name__ == '__main__':
     mqttc = mqtt.Client()
+    mqttc.on_message = on_message
+    mqttc.on_connect = on_connect
+
     mqttc.connect(MQTT_HOST)
     mqttc.loop_start()
-
-    def on_message(client, userdata, message):
-        global current_state, current_state_change
-        if message.topic == 'bitlair/state':
-            current_state        = message.payload == b'open'
-            current_state_change = time.time()
-    mqttc.on_message = on_message
-    mqttc.subscribe('bitlair/state', qos=2)
 
     app = make_app()
     app.listen(8888)
