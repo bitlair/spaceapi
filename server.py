@@ -45,7 +45,15 @@ class StatejsonHandler(tornado.web.RequestHandler):
                 'icon': {
                     'open':   BASE_URL+'/open.png',
                     'closed': BASE_URL+'/closed.png',
-                }
+                },
+                'mqtt': {
+                    'host': 'bitlair.nl',
+                    'port': 1883,
+                    'tls': False,
+                    'topic': 'bitlair/state',
+                    'closed': 'closed',
+                    'open': 'open'
+                },
             },
             'issue_report_channels': [ 'twitter' ],
         }
