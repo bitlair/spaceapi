@@ -8,7 +8,7 @@ import tornado.web
 
 PORT      = 8888
 BASE_URL  = 'https://bitlair.nl/state'
-MQTT_HOST = 'mqtt.bitlair.nl'
+MQTT_HOST = 'bitlair.nl'
 
 
 current_state        = False
